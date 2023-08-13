@@ -1,23 +1,10 @@
-import sys
-
 print("""
-█▄▀ █ ▄▀█ █▀ █▀█ █▀▀ ▀█▀
-█░█ █ █▀█ ▄█ █▄█ █▀░ ░█░
+                █▄▀ █ ▄▀█ █▀ █▀█ █▀▀ ▀█▀
+                █░█ █ █▀█ ▄█ █▄█ █▀░ ░█░
 
-█▀█ █▀▀ █▀ ▀█▀ ▄▀█ █░█ █▀█ ▄▀█ █▄░█ ▀█▀
-█▀▄ ██▄ ▄█ ░█░ █▀█ █▄█ █▀▄ █▀█ █░▀█ ░█░
-""")
-print ("""
-- - - - - - - - - - - - - - - - - - - - - - - - - -  - - -
+        █▀█ █▀▀ █▀ ▀█▀ ▄▀█ █░█ █▀█ ▄▀█ █▄░█ ▀█▀
+        █▀▄ ██▄ ▄█ ░█░ █▀█ █▄█ █▀▄ █▀█ █░▀█ ░█░""")
 
-░░ ▒█▀▄▀█ ▒█▀▀▀ ▒█▄░▒█ ▒█░▒█ 　 ▒█▀▀█ ░█▀▀█ ▒█▀▀█ ▒█▀▀▄ ░░ 
-▀▀ ▒█▒█▒█ ▒█▀▀▀ ▒█▒█▒█ ▒█░▒█ 　 ▒█░░░ ▒█▄▄█ ▒█▄▄▀ ▒█░▒█ ▀▀ 
-░░ ▒█░░▒█ ▒█▄▄▄ ▒█░░▀█ ░▀▄▄▀ 　 ▒█▄▄█ ▒█░▒█ ▒█░▒█ ▒█▄▄▀ ░░
-- - - - - - - - - - - - - - - - - - - - - - - - - -  - - -
-"""
-)
-lst_choice = []
-lst_qty = []
 menu = {
     1:'GUJARATI DISH', 
     2:'PUNJABI DISH', 
@@ -30,66 +17,88 @@ price = {
     3:120, 
     4:40
 }
+lst_cname=[]
+lst_choice=[]
+lst_qty=[]
+print(".........................................")
+cname = input('Enter Customer Name : ')
+print(".........................................")
 
-while(1):
-    print('''1: GUJARATI DISH\t Rs.150 / plate 
-    \n2: PUNJABI DISH\t Rs.160/plate 
-    \n3: MASALA DOSA & IDALI SAMBHAR\t Rs.120/plat  e 
-    \n4: CHAS Rs.40/serving
+while True:
+    print ("""
+==================================================================
+    ░░ ▒█▀▄▀█ ▒█▀▀▀ ▒█▄░▒█ ▒█░▒█  ▒█▀▀█ ░█▀▀█ ▒█▀▀█ ▒█▀▀▄ ░░ 
+    ▀▀ ▒█▒█▒█ ▒█▀▀▀ ▒█▒█▒█ ▒█░▒█  ▒█░░░ ▒█▄▄█ ▒█▄▄▀ ▒█░▒█ ▀▀ 
+    ░░ ▒█░░▒█ ▒█▄▄▄ ▒█░░▀█ ░▀▄▄▀  ▒█▄▄█ ▒█░▒█ ▒█░▒█ ▒█▄▄▀ ░░
+=================================================================="""
+    )
+    print('''
+    - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + -
+    Item Code           Food Item                   Price
+    - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + -
+        1             GUJARATI DISH              ₹.150 / plate 
+    -------------------------------------------------------------
+        2              PUNJABI DISH              ₹.160 / plate 
+    -------------------------------------------------------------
+        3             SOUTH INDIAN DISH          ₹.120 / plate 
+                (MASALA DOSA & IDALI SAMBHAR)
+    -------------------------------------------------------------
+        4                  CHAS                  ₹.40 / serving
+    -------------------------------------------------------------
 ''')
     try:
-        a = input('You want to place an order? (y/n) : ')
-
+        order = input('You want to place an order? (y/n) : ')
     except:
-        print("Oops!",sys.exc_info()[0],"occured.")
-        continue
-
-    if(a == 'y' or a == 'Y'):
+        print("Please Enter Correct choice Yes for n & No for n")
+    if(order == 'y' or order == 'Y'):
         try:
-            choice = int(input('Enter choice'))
-
+            print(".........................................")
+            choice = eval(input('Enter Food Item Code : '))
+            print(".........................................")
         except:
-            print("Oops!",sys.exc_info()[0],"occured.")
-            continue
-        
+            print("Please Enter Correct choice Yes for n & No for n")
+            continue    
         if(choice >= 1 and choice <= 4):
             try:
-                qty = int(input('How much qty do you need:'))
-
+                qty = int(input('Please Enter Food Quantity : '))
             except:
-                print("Oops!",sys.exc_info()[0],"occured.")
+                print("Please Enter Correct Quantity")
                 continue
-            
             if(qty >= 1):
+                lst_cname.append(cname)
                 lst_choice.append(choice)
                 lst_qty.append(qty)
-                print('\n')
-                
+                print('\n')         
             else:
                 print('Wrong Input \n')
                 continue
-            
         else:
             print('Wrong Input \n')
             continue
-
-    elif(a == 'n' or a == 'N'):
-        print('\n\nBILL:')
+    elif(order == 'n' or order == 'N'):
+        print('****************** BILL******************')
+        print(".........................................")
+        print('Customer Name : ', cname)
+        print(".........................................")
         total = 0
         length = len(lst_choice)
-        
+        print("""- + - + - + - + - + - + - + - + - + - + - + - + - + - + - + -
+                Food Item                           QTY               Price
+        - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + -""")
         for i in range(0, length):
             val = lst_choice[i]
-            print(menu[val])
-            print('Qty: ', lst_qty[i])
-            print('Rs.', price[val], 'per unit')
-            print('\n')
+            print(f'''
+    -------------------------------------------------------------
+    {menu[val]}                    {lst_qty[i]}  ₹.{price[val]}, per unit")
+    -------------------------------------------------------------
+    ''')
             total = total + (price[val] * lst_qty[i])
             
         print('total = Rs.', total)
         print('Thank you')
         break
-
     else:
-        print("Wrong input \n")
+        print("---------------------------------")
+        print("\tWrong Entry \n \tTry again...")
+        print("---------------------------------")
         continue
