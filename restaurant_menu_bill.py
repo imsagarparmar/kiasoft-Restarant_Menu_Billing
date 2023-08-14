@@ -6,10 +6,10 @@ print("""
         █▀▄ ██▄ ▄█ ░█░ █▀█ █▄█ █▀▄ █▀█ █░▀█ ░█░""")
 
 menu = {
-    1:'GUJARATI DISH', 
-    2:'PUNJABI DISH', 
+    1:'GUJARATI DISH    ', 
+    2:'PUNJABI DISH     ', 
     3:'SOUTH INDIAN DISH', 
-    4:'COLD DRINKS'
+    4:'COLD DRINKS      '
 }
 price = {
     1:150, 
@@ -70,35 +70,46 @@ while True:
                 lst_qty.append(qty)
                 print('\n')         
             else:
-                print('Wrong Input \n')
+                print('Incorrect Entered Data \n')
                 continue
         else:
-            print('Wrong Input \n')
+            print('Incorrect Entered Data \n')
             continue
     elif(order == 'n' or order == 'N'):
-        print('****************** BILL******************')
-        print(".........................................")
+        print('************************************ BILL ************************************')
+        print(".............................................................................")
         print('Customer Name : ', cname)
-        print(".........................................")
+        print(".............................................................................")
+        print('- + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + -')
+        print('Food Item\t\t\t\tQTY\t\t\tPrice')
+        print('- + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + -')
         total = 0
         length = len(lst_choice)
-        print("""- + - + - + - + - + - + - + - + - + - + - + - + - + - + - + -
-                Food Item                           QTY               Price
-        - + - + - + - + - + - + - + - + - + - + - + - + - + - + - + -""")
         for i in range(0, length):
             val = lst_choice[i]
-            print(f'''
-    -------------------------------------------------------------
-    {menu[val]}                    {lst_qty[i]}  ₹.{price[val]}, per unit")
-    -------------------------------------------------------------
-    ''')
-            total = total + (price[val] * lst_qty[i])
-            
-        print('total = Rs.', total)
-        print('Thank you')
+            print('-----------------------------------------------------------------------------')
+            print(f'{menu[val]}\t\t\t{lst_qty[i]}\t\t ₹.{price[val]}, Per Dish')
+            print('-----------------------------------------------------------------------------')
+    
+            total=total+(price[val]*lst_qty[i])
+            sgst=total*5/100
+            cgst=total*5/100
+            grand_total=total+(sgst+cgst)
+        print('\t\t\t\t\t\t____________________________')
+        print('\t\t\t\t\t\tTotal = ₹.', total,'/-')
+        print('\t\t\t\t\t\t____________________________')
+        print('\t\t\t\t\t\tSGST = ₹.', sgst,'/-')
+        print('\t\t\t\t\t\t____________________________')
+        print('\t\t\t\t\t\tCGST = ₹.', cgst,'/-')
+        print('\t\t\t\t\t\t____________________________')
+        print('\t\t\t\t\t\tGrand Total = ₹.',grand_total,'/-')
+        print('\t\t\t\t\t\t____________________________')
+        print('-----------------------------------------------------------------------------')
+        print('\t\t\t\tThank You')
+        print('-----------------------------------------------------------------------------')
         break
     else:
         print("---------------------------------")
-        print("\tWrong Entry \n \tTry again...")
+        print("\tWrong Entry, \tTry again...")
         print("---------------------------------")
         continue
