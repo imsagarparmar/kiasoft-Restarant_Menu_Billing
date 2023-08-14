@@ -1,3 +1,10 @@
+"""
+#------------------Kiasoft Internship------------------#
+| Name :- Sagar Parmar                                 |
+| Intern ID :- CR660                                   |
+| Project Name :- Restaurant Menu Card And Billing (Console Application)  |
+#------------------------------------------------------#
+"""
 import time
 print("""
                 █▄▀ █ ▄▀█ █▀ █▀█ █▀▀ ▀█▀
