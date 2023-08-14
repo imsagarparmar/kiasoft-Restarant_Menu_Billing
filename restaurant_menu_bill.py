@@ -1,3 +1,4 @@
+import time
 print("""
                 █▄▀ █ ▄▀█ █▀ █▀█ █▀▀ ▀█▀
                 █░█ █ █▀█ ▄█ █▄█ █▀░ ░█░
@@ -17,12 +18,13 @@ price = {
     3:120, 
     4:40
 }
+lst_cpn=[20] 
 lst_cname=[]
 lst_choice=[]
 lst_qty=[]
-print(".........................................")
+print("...................................................")
 cname = input('Enter Customer Name : ')
-print(".........................................")
+print("...................................................")
 
 while True:
     print ("""
@@ -76,6 +78,20 @@ while True:
             print('Incorrect Entered Data \n')
             continue
     elif(order == 'n' or order == 'N'):
+        cpn_cod = input('Coupon Code(if you have otherwise skip) : ')
+        for t in range(4):
+            print("\rGenerating your BILL    ",end="");
+            time.sleep(0.5)
+            print("\rGenerating your BILL.   ",end="");
+            time.sleep(0.5)
+            print("\rGenerating your BILL..  ",end="");
+            time.sleep(0.5)
+            print("\rGenerating your BILL... ",end="");
+            time.sleep(0.5)
+            print("\rGenerating your BILL....",end="");
+            time.sleep(0.5)
+        print("\n\tBill Generated Successfully")
+
         print('************************************ BILL ************************************')
         print(".............................................................................")
         print('Customer Name : ', cname)
@@ -90,17 +106,23 @@ while True:
             print('-----------------------------------------------------------------------------')
             print(f'{menu[val]}\t\t\t{lst_qty[i]}\t\t ₹.{price[val]}, Per Dish')
             print('-----------------------------------------------------------------------------')
-    
             total=total+(price[val]*lst_qty[i])
             sgst=total*5/100
             cgst=total*5/100
-            grand_total=total+(sgst+cgst)
+            if cpn_cod=="KIASOFT" or  cpn_cod=='kiasoft':
+                grand_total=total+(sgst+cgst)-lst_cpn[0]
+                prnt=lst_cpn[0]
+            else:
+                grand_total=total+(sgst+cgst)
+                prnt=0
         print('\t\t\t\t\t\t____________________________')
-        print('\t\t\t\t\t\tTotal = ₹.', total,'/-')
+        print('\t\t\t\t\t\tTotal = ₹.',total,'/-')
         print('\t\t\t\t\t\t____________________________')
-        print('\t\t\t\t\t\tSGST = ₹.', sgst,'/-')
+        print('\t\t\t\t\t\tSGST = ₹.',sgst,'/-')
         print('\t\t\t\t\t\t____________________________')
-        print('\t\t\t\t\t\tCGST = ₹.', cgst,'/-')
+        print('\t\t\t\t\t\tCGST = ₹.',cgst,'/-')
+        print('\t\t\t\t\t\t____________________________')
+        print('\t\t\t\t\t\tCoupon Code = ₹.',prnt,'/-')
         print('\t\t\t\t\t\t____________________________')
         print('\t\t\t\t\t\tGrand Total = ₹.',grand_total,'/-')
         print('\t\t\t\t\t\t____________________________')
